@@ -12,9 +12,16 @@
   --accent-font: STIX Two Text;
 }
 
+.theme_dark {
+  --bg-color: #171717;
+  --text-color: #B3B3B3;
+  --accent-color: #transparent;
+}
+
 .page {
   min-inline-size: 360px;
-  margin: 0;
+  max-inline-size: 1440px;
+  margin: 0 auto;
   font-family: var(--main-font);
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -52,6 +59,61 @@ figure {
   margin-bottom: 40px;
 }
 
+.header__logo {
+  display: flex;
+  justify-content: space-between
+}
+
+.header__theme-toggler {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+
+}
+
+.header__theme-button {
+  font-family: inherit;
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: 104%;
+  border: none;
+  cursor: pointer;
+  background-color: var(--bg-color);
+}
+
+.header__theme-button:hover {
+  text-decoration: underline;
+}
+
+.header__theme-button:active {
+  font-weight: 700;
+}
+
+.header__theme-button:checked {
+  display: block;
+  font-weight: 700;
+}
+
+.header__theme-button:focus-visible {
+  outline: currentColor;
+}
+
+.header__theme-button:disabled {
+  pointer-events: none;
+}
+
+.header__theme-button_is-active::after {
+  content: "";
+  display: block;
+}
+
+.theme_dark .header__theme-button_is-active::after {
+  content: "";
+  position: absolute;
+  background-image: url(../images/pattern.svg);
+  background-size: cover;
+}
+
 .content-section {
   padding: 0 5vw;
 }
@@ -69,6 +131,16 @@ figure {
 .content__text-block .content__paragraph:not(:last-child) {
   margin-bottom: 1.5em;
 }
+
+.content__text-block_type_first-lettered .content__paragraph:first-child:first-letter {
+  background: var(--accent-color);
+  display: inline-block;
+  padding: 0 4px;
+  margin-right: 1px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
 
 .content__blockquote {
   width: 75%;
@@ -98,6 +170,53 @@ figure {
   background-position: center;
   margin-top: 3px;
   margin-left: -25px;
+}
+
+.content__figure {
+  width: inherit;
+  /*width: calc(100% + (7vi * 2));*/
+  overflow: hidden;
+  margin: 7% 0;
+}
+
+.content__picture {
+  width: inherit;
+  left: -7vi;
+}
+
+.content__picture-caption {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.content__card {
+  aspect-ratio: 4/3;
+  display: flex;
+  margin-top: 7%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid currentColor;
+}
+
+.content__card-title {
+  font-family: STIX Two Text, serif;
+  font-size: 60px;
+}
+
+.content__card-subtitle {
+  font-size: 18px;
+}
+
+.colored-text::after {
+  content: "";
+  position: absolute;
+  width: 3.7em;
+  height: 0.3em;
+  background-color: var(--accent-color);
+  z-index: -1;
+  margin-top: 25px;
+  margin-left: -220px;
 }
 
 .link {
